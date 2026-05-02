@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Web Solutions | SM Gedeza Dev</title>
+    <meta name="description" content="High-end, affordable website packages by Sfundo Mnyandu. Specialized in Portfolio, Booking, and E-commerce systems.">
+    <meta name="author" content="Sfundo Mnyandu">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #1a3c4a, #0f2027);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li { margin: 0 20px; }
+        .nav-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .nav-links a:hover { color: #00d4ff; }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* TABS */
+        .package-tabs {
+            display: flex;
+            justify-content: center;
+            padding: 50px 0 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 28px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: 0.4s;
+            font-weight: 600;
+        }
+
+        .tab-button.active {
+            background: #00d4ff;
+            color: #0f2027;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* SECTIONS */
+        .tab-section {
+            display: none;
+            padding: 60px 8%;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .tab-section.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-intro h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-intro p { color: #888; }
+
+        /* CARDS */
+        .package-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .package-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 24px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .package-card:hover {
+            transform: translateY(-15px);
+            border-color: #00d4ff;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00d4ff;
+            color: #000;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            color: #00d4ff;
+            font-weight: 600;
+            margin: 15px 0 25px;
+        }
+
+        .package-card ul { list-style: none; margin-bottom: 30px; flex-grow: 1; }
+        .package-card ul li {
+            margin: 12px 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            color: #ccc;
+        }
+
+        .package-card ul li i {
+            color: #00d4ff;
+            margin-right: 12px;
+            font-size: 0.8rem;
+        }
+
+        .cta-button {
+            display: block;
+            text-align: center;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #00d4ff;
+            color: #0f2027;
+        }
+
+        /* ADDONS SECTION */
+        .addons-section {
+            padding: 80px 8%;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .addon-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            transition: 0.3s;
+        }
+        
+        .addon-card:hover { background: rgba(255, 255, 255, 0.08); }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 8% 30px;
+            background: #050a0c;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        
+        .footer-links a:hover { color: #00d4ff; padding-left: 5px; }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .social-icons a:hover {
+            background: #00d4ff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* MOBILE MENU RESPONSIVENESS */
+        @media(max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.95);
+                padding: 40px;
+                text-align: center;
+                border-bottom: 1px solid #00d4ff;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { margin: 15px 0; }
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="#" class="logo">SM GEDEZA DEV</a>
+    <nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="About.html">About Me</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<div class="package-tabs">
+    <button class="tab-button active" data-target="portfolio">Portfolio</button>
+    <button class="tab-button" data-target="booking">Booking</button>
+    <button class="tab-button" data-target="ecommerce">Shop</button>
+</div>
+
+<section id="portfolio" class="tab-section active">
+    <div class="section-intro">
+        <h2>Corporate & Portfolio</h2>
+        <p>High-performance sites for professionals and small businesses</p>
+    </div>
+
+    <div class="package-cards">
+        <div class="package-card">
+            <h3>Starter</h3>
+            <p class="price">R1,500</p>
+            <ul>
+                <li><i class="fas fa-check"></i> 3 Custom Pages</li>
+                <li><i class="fas fa-check"></i> Responsive Mobile Layout</li>
+                <li><i class="fas fa-check"></i> Modern Contact Form</li>
+                <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+
+        <div class="package-card">
+            <span class="badge">Most Popular</span>
+            <h3>Business</h3>
+            <p class="price">R3,500</p>
+            <ul>
+                <li><i class="fas fa-check"></i> 5-7 Premium Pages</li>
+                <li><i class="fas fa-check"></i> Interactive Animations</li>
+                <li><i class="fas fa-check"></i> Content Management (CMS)</li>
+                <li><i class="fas fa-check"></i> Advanced Google SEO</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+
+        <div class="package-card">
+            <h3>Enterprise</h3>
+            <p class="price">R6,000+</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                <li><i class="fas fa-check"></i> Custom Web Application</li>
+                <li><i class="fas fa-check"></i> Dedicated Admin Dashboard</li>
+                <li><i class="fas fa-check"></i> Priority Support</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="tab-section">
+    <div class="section-intro">
+        <h2>Booking Systems</h2>
+        <p>Streamline your appointments and client scheduling</p>
+    </div>
+    <div class="package-cards">
+        <div class="package-card">
+            <span class="badge">Efficiency</span>
+            <h3>Service Pro</h3>
+            <p class="price">R4,500</p>
+            <ul>
+                <li><i class="fas fa-calendar-alt" style="margin-right:10px; color:#00d4ff;"></i> Online Scheduling</li>
+                <li><i class="fas fa-bell" style="margin-right:10px; color:#00d4ff;"></i> Email Notifications</li>
+                <li><i class="fas fa-user-friends" style="margin-right:10px; color:#00d4ff;"></i> Client Database</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Get Started</a>
+        </div>
+    </div>
+</section>
+
+<section id="ecommerce" class="tab-section">
+    <div class="section-intro">
+        <h2>E-commerce Store</h2>
+        <p>Ready-to-sell platforms with secure payment gateways</p>
+    </div>
+    <div class="package-cards">
+        <div class="package-card">
+            <span class="badge">Secure</span>
+            <h3>Online Shop</h3>
+            <p class="price">R8,500+</p>
+            <ul>
+                <li><i class="fas fa-shopping-cart" style="margin-right:10px; color:#00d4ff;"></i> Product Management</li>
+                <li><i class="fas fa-credit-card" style="margin-right:10px; color:#00d4ff;"></i> Payment Integration</li>
+                <li><i class="fas fa-box" style="margin-right:10px; color:#00d4ff;"></i> Order Tracking</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Build Store</a>
+        </div>
+    </div>
+</section>
+
+<section class="addons-section">
+    <h2 style="text-align: center; margin-bottom: 40px;">Professional Add-Ons</h2>
+    <div class="addon-grid">
+        <div class="addon-card">
+            <h4>Extra Page</h4>
+            <p>R250 - R500</p>
+        </div>
+        <div class="addon-card">
+            <h4>Monthly Maintenance</h4>
+            <p>R200 / mo</p>
+        </div>
+        <div class="addon-card">
+            <h4>Logo Design</h4>
+            <p>R450</p>
+        </div>
+        <div class="addon-card">
+            <h4>Speed Optimization</h4>
+            <p>R600</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h3 style="color:#00d4ff; margin-bottom: 15px;">SM GEDEZA DEV</h3>
+            <p style="color: #888; font-size: 0.9rem;">Turning complex ideas into high-performance digital solutions. Pretoria based, globally focused.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Explore</h4>
+            <a href="Home.html">Home</a>
+            <a href="About.html">About Me</a>
+            <a href="#">Portfolio</a>
+            <a href="Contact.html">Get in Touch</a>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p style="color:#888; font-size:0.9rem;">
+                <i class="fas fa-envelope" style="color:#00d4ff; width:20px;"></i> mnyandusfundo92@mail.com<br>
+                <i class="fas fa-phone" style="color:#00d4ff; width:20px;"></i> +27 79 491 1223
+            </p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Sfundo Mnyandu | SM Gedeza Dev. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+    // Tab Functionality
+    const buttons = document.querySelectorAll(".tab-button");
+    const sections = document.querySelectorAll(".tab-section");
+
+    buttons.forEach(btn => {
+        btn.onclick = () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            sections.forEach(s => s.classList.remove("active"));
+
+            btn.classList.add("active");
+            document.getElementById(btn.dataset.target).classList.add("active");
+        };
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

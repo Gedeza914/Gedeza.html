@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sfundo Mnyandu | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --dark: #0a0e14;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--dark); color: white; line-height: 1.6; scroll-behavior: smooth; }
+
+        nav {
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 14, 20, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: linear-gradient(rgba(10,14,20,0.9), rgba(10,14,20,0.9)),
+            url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072');
+            background-size: cover;
+        }
+
+        .hero h1 { font-size: 4rem; color: var(--primary); margin-bottom: 10px; }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+
+        .hire-btn {
+            padding: 15px 35px;
+            background: var(--primary);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .hire-btn:hover {
+            background: white;
+            transform: translateY(-5px);
+        }
+
+        .section { padding: 100px 10%; }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            padding: 40px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: 0.4s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            margin: 5px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            border: 1px solid var(--primary);
+        }
+
+        /* FOOTER */
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: #050a0c;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-left { flex: 1; min-width: 250px; margin-bottom: 40px; }
+        .footer-left img { width: 150px; margin-bottom: 20px; }
+        .footer-left p { color: #666; font-size: 0.9rem; }
+
+        .footer-right {
+            display: flex;
+            flex: 2;
+            justify-content: flex-end;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a, .footer-contact p {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover { color: #00d4ff; transform: translateX(5px); }
+
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d4ff;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover { background: #00d4ff; color: #000; }
+        @media (max-width: 992px) { .hero-container { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">GeDeza</div>
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="Learn.html">About</a>
+        <a href="#projects">Projects</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <div>
+        <h1 id="animated-text"></h1>
+        <p>I design and build smart digital solutions that solve real business problems. Informatics student specializing in software development, systems analysis, and modern web design.</p>
+        <a href="mailto:mnyandusfundo92@mail.com">
+            <button class="hire-btn">Hire Me</button>
+        </a>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <h2 class="section-title">About Me</h2>
+    <div class="card">
+        <p>I am an Informatics student at the Tshwane University of Technology, passionate about transforming ideas
+             into powerful digital solutions. By blending business strategy with software development, 
+             I create systems that go beyond functionality—delivering efficiency, innovation, and meaningful impact.</p>
+    </div>
+</section>
+
+<section id="skills" class="section">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="card" style="text-align: center;">
+        <span class="skill-tag">HTML5 & CSS3</span>
+        <span class="skill-tag">System Analysis</span>
+        <span class="skill-tag">Java Script</span>
+        <span class="skill-tag">Java Development</span>
+        <span class="skill-tag">Enterprise Architecture</span>
+        <span class="skill-tag">Business Intelligence</span>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2 class="section-title">Projects</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Gedeza Shop App</h3>
+            <p>Developed a Java-based application for product selection, payment processing, and customer validation using SA ID verification.</p>
+        </div>
+        <div class="card">
+            <h3>Cleaning Services App</h3>
+            <p>Designed a system to calculate service costs for cleaners, gardeners, and handymen with structured business logic.</p>
+        </div>
+        <div class="card">
+            <h3>Portfolio Website</h3>
+            <p>Created a modern responsive personal portfolio using HTML, CSS, and animations.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-left">
+        <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
+        <p>Informatics Solutions & Professional Web Design.</p>
+        <p style="margin-top: 10px;">&copy;SM G E D E Z A  D E V E L O P E R , RSA.</p>
+    </div>
+
+    <div class="footer-right">
+        <div class="footer-links">
+            <h4>Navigate</h4>
+            <a href="Home.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="ViewP.html">Services</a>
+            <a href="Contact.html">Contact</a>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <p><i class="fas fa-envelope" style="color:#00d4ff;"></i> mnyandusfundo92@mail.com</p>
+            <p><i class="fas fa-phone" style="color:#00d4ff;"></i> +27 79 491 1223</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const textElement = document.getElementById("animated-text");
+    const words = ["SFUNDO MNYANDU", "Software Developer", "Java Developer", "Web Designer"];
+    let wordIndex = 0, charIndex = 0;
+
+    function type() {
+        if(charIndex < words[wordIndex].length) {
+            textElement.textContent += words[wordIndex].charAt(charIndex++);
+            setTimeout(type, 100);
+        } else {
+            setTimeout(erase, 2000);
+        }
+    }
+
+    function erase() {
+        if(charIndex > 0) {
+            textElement.textContent = words[wordIndex].substring(0, --charIndex);
+            setTimeout(erase, 50);
+        } else {
+            wordIndex = (wordIndex + 1) % words.length;
+            setTimeout(type, 500);
+        }
+    }
+
+    type();
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href"))
+                .scrollIntoView({ behavior: "smooth" });
+        });
+    });
+</script>
+
+</body>
+</html>
