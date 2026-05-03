@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cake Advertisement</title>
+
+<style>
+/* Background slideshow */
+
+body{
+    font-family: Arial;
+    text-align: center;
+    margin:0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
+}
+
+body{
+    font-family: Arial;
+    background-color: #fff3e6;
+    text-align: center;
+    margin:0;
+}
+
+h1{
+    color: brown;
+}
+
+/* Navigation bar */
+
+nav{
+    background:brown;
+    padding:10px;
+}
+
+nav ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:flex-end;
+}
+
+nav li{
+    margin-left:20px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* Cake section */
+
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.cake{
+    width:220px;
+    margin:20px;
+    text-align:center;
+}
+
+.cake img{
+    width:180px;
+    height:180px;
+    border-radius:60%;
+    object-fit:cover;
+    border:4px solid brown;
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- Navigation icons -->
+<nav>
+        <ul>
+        <li><a href="#">🏠 Home</a></li>
+        <li><a href="Cakes.html"> Catalog</a></li>
+
+        </ul>
+</nav> 
+
+<h1>🍰 Delicious Cake Catalog 🍰</h1>
+<p>Order your favorite cake today!</p>
+
+<div class="container">
+
+ <div class="cake">
+        <img src="image/Brown Snow.jpeg">
+        <h3>Brown Snowball</h3>
+
+        </div>
+
+        <div class="cake">
+        <img src="image/Red SnowBall Cake.jpeg">
+        <h3>Red Snowball</h3>
+
+</div>
+
+<div class="cake">
+<img src="image/Scones.jpeg">
+<h3>Scones</h3>
+
+</div>
+
+<div class="cake">
+<img src="image/Banana Cakes.jpeg">
+<h3>Banana Cake</h3>
+
+</div>
+
+<div class="cake">
+<img src="image/Banana Chocolate cakes.jpeg">
+<h3>Banana Chocolate</h3>
+
+
+</div>
+
+<div class="cake">
+<img src="image/Ginger.jpeg">
+<h3>Ginger & Lemon</h3>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+<script>
+
+let images = [
+"image/Scones.jpeg",
+"image/Banana Cakes.jpeg",
+
+];
+
+let i = 0;
+
+function changeBackground(){
+
+document.body.style.backgroundImage = "url('" + images[i] + "')";
+
+i++;
+
+if(i == images.length){
+i = 0;
+}
+
+}
+
+setInterval(changeBackground,3000);
+
+changeBackground();
+
+</script>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Delights Bakery | Artisan Homemade Cakes</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #d6336c;
+            --primary-hover: #a61e4d;
+            --secondary: #ff8fab;
+            --soft-pink: #fff5f7;
+            --white: #ffffff;
+            --dark: #2d3436;
+            --glass: rgba(255, 255, 255, 0.9);
+            --shadow: 0 15px 35px rgba(214, 51, 108, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-pink);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--primary); 
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+        
+        .logo span { font-size: 0.7rem; display: block; color: var(--dark); font-family: 'Poppins'; font-weight: 300; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .cart-trigger {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .cart-trigger:hover { background: var(--dark); transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h2 { font-family: 'Playfair Display', serif; font-size: 4rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; max-width: 600px; }
+
+        /* --- CATEGORIES --- */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .chip {
+            padding: 8px 25px;
+            background: white;
+            border-radius: 50px;
+            border: 1px solid #eee;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .chip.active, .chip:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- MENU SECTION --- */
+        .menu-section { padding: 40px 8% 100px; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--dark); }
+        .section-title .divider { width: 60px; height: 3px; background: var(--primary); margin: 15px auto; }
+
+        .cakes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .cake-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .cake-card:hover { transform: translateY(-15px); }
+
+        .img-container { width: 100%; height: 280px; overflow: hidden; position: relative; }
+        .cake-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .cake-card:hover img { transform: scale(1.1); }
+
+        .card-body { padding: 25px; text-align: center; }
+        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; }
+        .price-tag { color: var(--primary); font-weight: 700; font-size: 1.3rem; display: block; margin-bottom: 20px; }
+
+        .btn-booking {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-booking:hover { background: var(--dark); letter-spacing: 1px; }
+
+        /* --- WHATSAPP FLOATER --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 3000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            color: #afafaf;
+            padding: 80px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 { color: var(--white); font-family: 'Playfair Display'; font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-col p { font-size: 0.9rem; margin-bottom: 10px; }
+        
+        .social-circle {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            color: white;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-circle:hover { background: var(--primary); transform: translateY(-3px); }
+
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #333; font-size: 0.8rem; }
+
+        /* MOBILE FIX */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/27720582329" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav>
+    <div class="logo">
+        <h1>Sweet Delights</h1>
+        <span>BY FANISILE THOBEKA SITHOLE</span>
+    </div>
+    <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="OurMenu.html">Our Menu</a>
+        <a href="Cakes.html">About</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+    <a href="Oder.html" class="cart-trigger">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Slip (<span id="cart-count">0</span>)</span>
+    </a>
+</nav>
+
+<section class="hero">
+    <h2>Baked with Love</h2>
+    <p>Experience the finest artisan cakes handcrafted to perfection for your most cherished celebrations.</p>
+    <a href="OurMenu.html" class="btn-booking" style="width: auto; padding: 15px 40px; text-decoration: none;">Explore Menu</a>
+</section>
+
+<div class="categories">
+    <div class="chip active">All Cakes</div>
+    <div class="chip">Traditional</div>
+    <div class="chip">Chocolate Base</div>
+    <div class="chip">Fruit Infused</div>
+    <div class="chip">Custom Buckets</div>
+</div>
+
+<section class="menu-section" id="menu">
+    <div class="section-title">
+        <h2>Our Bestsellers</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div class="cakes-grid">
+        <div class="cake-card">
+            <div class="img-container">
+                <img src="image/WhatsApp Image 2026-03-16 at 16.02.01.jpeg" alt="Ginger Round">
+            </div>
+            <div class="card-body">
+                <h3>Ginger Round Cake</h3>
+                <span class="price-tag">R450.00</span>
+                <button class="btn-booking" onclick="addToCart('Ginger Round', 450)">Add to Booking</button>
+            </div>
+        </div>
+
+        <div class="cake-card">
+            <div class="img-container">
+                <img src="image/Banana Chocolate cakes.jpeg" alt="Banana Chocolate">
+            </div>
+            <div class="card-body">
+                <h3>Banana Chocolate</h3>
+                <span class="price-tag">R500.00</span>
+                <button class="btn-booking" onclick="addToCart('Banana Chocolate', 500)">Add to Booking</button>
+            </div>
+        </div>
+
+        <div class="cake-card">
+            <div class="img-container">
+                <img src="image/Brown Snow.jpeg" alt="Snowball">
+            </div>
+            <div class="card-body">
+                <h3>Brown Snowball</h3>
+                <span class="price-tag">R550.00</span>
+                <button class="btn-booking" onclick="addToCart('Brown Snowball', 550)">Add to Booking</button>
+            </div>
+        </div>
+
+        <div class="cake-card">
+            <div class="img-container">
+                <img src="image/Red SnowBall Cake.jpeg" alt="Red Velvet">
+            </div>
+            <div class="card-body">
+                <h3>Red Velvet Deluxe</h3>
+                <span class="price-tag">R600.00</span>
+                <button class="btn-booking" onclick="addToCart('Red Velvet Deluxe', 600)">Add to Booking</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>Sweet Delights</h4>
+            <p>We believe every celebration deserves a touch of sweetness. Our artisan bakery uses only premium ingredients to ensure every bite is memorable.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact Details</h4>
+            <p><i class="fas fa-phone-alt"></i> +27 72 058 2329</p>
+            <p><i class="fas fa-envelope"></i> thobekasithole@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> South Africa</p>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Our Journey</h4>
+            <div class="social-icons">
+                <a href="#" class="social-circle"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/27720582329" class="social-circle"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        &copy; 2026 Sweet Delights Bakery. Handcrafted with passion.
+    </div>
+</footer>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('bakeryCart')) || [];
+    document.getElementById('cart-count').innerText = cart.length;
+
+    function addToCart(name, price) {
+        cart.push({ name: name, price: price });
+        localStorage.setItem('bakeryCart', JSON.stringify(cart));
+        document.getElementById('cart-count').innerText = cart.length;
+        
+        // Animated Toast/Notification instead of plain alert
+        const notification = document.createElement('div');
+        notification.style = "position:fixed; top:100px; right:20px; background:#25d366; color:white; padding:15px 25px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.2); z-index:9999; transition:0.5s;";
+        notification.innerHTML = `<i class="fas fa-check"></i> ${name} added to slip!`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.opacity = "0";
+            setTimeout(() => notification.remove(), 500);
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>

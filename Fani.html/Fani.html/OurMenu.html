@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Menu | Sweet Delights Bakery — Artisan Selection</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #d6336c;
+            --secondary: #ff8fab;
+            --dark: #1e272e;
+            --light-bg: #fffbfb;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(214, 51, 108, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--light-bg); color: var(--dark); line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); font-weight: 700; text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; transition: var(--transition); }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+
+        /* --- MENU HERO --- */
+        .menu-hero {
+            text-align: center;
+            padding: 80px 8% 40px;
+            background: linear-gradient(to bottom, #fff5f7, var(--light-bg));
+        }
+        .menu-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary); margin-bottom: 10px; }
+        .menu-hero p { color: #576574; font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; }
+
+        /* --- CATEGORY FILTER --- */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--secondary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* --- MENU GRID --- */
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .menu-item {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(214, 51, 108, 0.05);
+        }
+        .menu-item:hover { transform: translateY(-10px); }
+
+        .item-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .menu-item:hover .item-image img { transform: scale(1.1); }
+
+        .item-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .item-details { padding: 25px; }
+        .item-details h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; color: var(--dark); }
+        .item-details p { font-size: 0.9rem; color: #576574; margin-bottom: 20px; }
+        
+        .item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #f1f2f6;
+            padding-top: 15px;
+        }
+        .price { font-weight: 700; color: var(--primary); font-size: 1.2rem; }
+        .order-btn {
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .order-btn:hover { background: var(--primary); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a1a1a;
+            color: #afafaf;
+            padding: 80px 8% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h4 { color: var(--white); font-family: 'Playfair Display'; font-size: 1.2rem; margin-bottom: 20px; }
+        .footer-col p { font-size: 0.9rem; margin-bottom: 10px; }
+        
+        .social-circle {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            color: white;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .social-circle:hover { background: var(--primary); transform: translateY(-3px); }
+
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #333; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="Home.html" class="logo">Sweet Delights</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Cakes.html">About</a></li>
+                <li><a href="menu.html" class="active">Our Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="menu-hero">
+        <h1>Artisan Creations</h1>
+        <p>Explore our handcrafted selection of signature cakes, traditional recipes, and bespoke treats.</p>
+        
+        <div class="category-filter">
+            <button class="filter-btn active">All Items</button>
+            <button class="filter-btn">Signature Cakes</button>
+            <button class="filter-btn">Traditional</button>
+            <button class="filter-btn">Biscuits & Scones</button>
+        </div>
+    </section>
+
+    <main class="menu-container">
+        <div class="menu-item">
+            <div class="item-image">
+                <span class="item-tag">Best Seller</span>
+                <img src="image/Banana Chocolate cakes.jpeg" alt="Banana Chocolate Cake">
+            </div>
+            <div class="item-details">
+                <h3>Banana Chocolate Fusion</h3>
+                <p>Moist banana sponge layered with rich dark chocolate ganache and velvet frosting.</p>
+                <div class="item-footer">
+                    <span class="price">R 450.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="image/WhatsApp Image 2026-03-16 at 16.02.37.jpeg" alt="Traditional Ginger Cake">
+            </div>
+            <div class="item-details">
+                <h3>Signature Ginger Cake</h3>
+                <p>Our famous traditional recipe using fresh ginger and warm spices for a timeless taste.</p>
+                <div class="item-footer">
+                    <span class="price">R 380.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="image/Red SnowBall Cake.jpeg" alt="Red Snowball Cakes">
+            </div>
+            <div class="item-details">
+                <h3>Red Velvet Snowballs</h3>
+                <p>Individually crafted red velvet bites rolled in fresh desiccated coconut.</p>
+                <div class="item-footer">
+                    <span class="price">R 250.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="image/WhatsApp Image 2026-03-16 at 16.02.01.jpeg" alt="Carrot Cake">
+            </div>
+            <div class="item-details">
+                <h3>Artisan Carrot Delight</h3>
+                <p>Loaded with roasted nuts and fresh carrots, topped with a zesty cream cheese frosting.</p>
+                <div class="item-footer">
+                    <span class="price">R 420.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="image/WhatsApp Image 2026-03-15 at 22.12.56.jpeg" alt="Artisan Biscuits">
+            </div>
+            <div class="item-details">
+                <h3>Hand-Pressed Biscuits</h3>
+                <p>A selection of buttery shortbread and traditional South African biscuits (Assorted 1kg).</p>
+                <div class="item-footer">
+                    <span class="price">R 180.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-image">
+                <img src="image/Scones.jpeg" alt="Scones">
+            </div>
+            <div class="item-details">
+                <h3>Master-Class Scones</h3>
+                <p>Fluffy, golden-brown scones served with homemade jam and whipped cream (Set of 6).</p>
+                <div class="item-footer">
+                    <span class="price">R 180.00</span>
+                    <a href="Oder.html" class="order-btn">Order Now</a>
+                </div>
+            </main>
+
+                 <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Sweet Delights</h4>
+                <p>Handcrafting j   oy and celebrating life's moments through premium artisan baking since 2024.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Contact</h4>
+                <p><i class="fas fa-phone-alt"></i> +27 72 058 2329</p>
+                <p><i class="fas fa-envelope"></i> thobekasithole@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/27720582329" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; <span id="year"></span> SWEET DELIGHTS BAKERY. ALL RIGHTS RESERVED. | Ulundi, SA
+        </div>
+    </footer>
