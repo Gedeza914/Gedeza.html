@@ -77,6 +77,68 @@
     
     .view-hint { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); opacity: 0; transition: 0.3s; }
     .card:hover .view-hint { opacity: 1; }
+/* Container: Increased width to 95% to utilize screen space */
+.cards-grid { 
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    padding-top: 150px; 
+    position: relative;
+    margin: 0 auto;
+}
+
+/* The vertical "trunk" */
+.cards-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 6px;
+    height: 500px; 
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+/* Node Styling - Increased width for better clarity */
+.project-card {
+    position: relative;
+    flex: 0 0 400px; /* Wider cards */
+    min-height: 400px; 
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    cursor: pointer;
+    transition: 0.4s;
+    text-align: center;
+}
+
+/* Connecting branch from the trunk */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    width: 6px;
+    height: 100px;
+    background: var(--accent);
+}
+
+/* Ensure the modal content is wider */
+.modal-content { 
+    position: relative; 
+    margin: 1% auto; 
+    width: 100%; 
+    height: 95%; 
+    background: var(--dark); 
+    border: 2px solid var(--accent); 
+    border-radius: 15px; 
+    overflow: hidden; 
+}
+
     </style>
 </head>
 <body>
@@ -148,15 +210,17 @@
             <div class="card-img-container">
                 <img src="image/GEDEZA.png" alt="Portfolio Preview">
             </div>
-            <h4>My Portfolio</h4>
+            <h4>MY PORTFOLIO</h4>
             <p>Responsive design and custom UI elements.</p>
             <span class="view-hint">Click to View</span>
         </div>
 
-        <div class="card project-card" data-url="https://your-med-portal.com">
-            <div class="card-image"><i class="fas fa-heartbeat"></i></div>
-            <h4>Med-Health Portal</h4>
-            <p>Secure Patient Record Management</p>
+        <div class="card project-card" data-url="Fanis.html">
+            <div class="card-img-container">
+                <img src="image/Mafani.jpeg" alt="Portfolio Preview">
+            </div>
+            <h4>FANISILE BAKERY</h4>
+            <p>Fanisile Bakery , is a woman who available if you want someone to make some best cake for your occasion</p>
             <span class="view-hint">Click to View</span>
         </div>
         
@@ -204,9 +268,11 @@
     const words = ["SFUNDO MNYANDU"];
     let charIdx = 0;
     function typeEffect() {
-        textElement.textContent = words[0].substring(0, charIdx + 1);
-        charIdx++;
-        if (charIdx < words[0].length) setTimeout(typeEffect, 150);
+        if (charIdx < words[0].length) {
+            textElement.textContent += words[0].charAt(charIdx);
+            charIdx++;
+            setTimeout(typeEffect, 150);
+        }
     }
     typeEffect();
 
@@ -223,8 +289,18 @@
         });
     });
 
-    closeBtn.onclick = () => { modal.style.display = "none"; frame.src = ""; };
-    window.onclick = (event) => { if (event.target == modal) { modal.style.display = "none"; frame.src = ""; } };
+    // Close Modal on click
+    closeBtn.onclick = () => { 
+        modal.style.display = "none"; 
+        frame.src = ""; 
+    };
+
+    window.onclick = (event) => { 
+        if (event.target == modal) { 
+            modal.style.display = "none"; 
+            frame.src = ""; 
+        } 
+    };
 </script>
 
 </body>
