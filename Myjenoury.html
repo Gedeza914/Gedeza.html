@@ -84,13 +84,14 @@
         }
 
         .hero-image-side {
+            height: 90%;
             flex: 1;
             text-align: center;
         }
 
         .hero-image-side img {
             width: 100%;
-            max-width: 380px;
+            max-width: 480px;
             border-radius: 30px;
             filter: drop-shadow(0 10px 30px rgba(0, 212, 255, 0.3));
             transition: var(--transition);
@@ -150,17 +151,18 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .pricing-card {
             background: var(--glass);
-            padding: 40px;
+            padding: 60px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: var(--transition);
             text-align: center;
+            position: relative;
         }
 
         .pricing-card:hover {
@@ -186,67 +188,59 @@
             font-weight: bold;
         }
 
-        /* PROJECTS GRID (TRUNK & BRANCH) */
+        /* PROJECTS GRID - PARALLEL LAYOUT */
         #projects {
+            width: 100%;
+            height: 90%;
             position: relative;
         }
 
         .cards-grid {
-            position: relative;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 80px;
-            max-width: 1000px;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 40px 0 0;
-        }
-
-        .trunk {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: calc(50% - 3px);
-            width: 6px;
-            background: var(--accent);
-            z-index: -1;
-            box-shadow: 0 0 15px var(--accent);
+            align-items: center;
+            position: relative;
         }
 
         .projected {
+            width: 100%;
+            height: 90%;
             background: var(--glass);
             padding: 25px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(60, 88, 228, 0.1);
             transition: var(--transition);
             cursor: pointer;
             text-align: center;
             position: relative;
         }
 
-        .projected::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 6px;
+        .vertical-line {
+            width: 6px;
+            height: 100%;
+            background: rgba(159, 212, 226, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 150px;
+        }
+
+        .bullet {
+            width: 20px;
+            height: 14px;
             background: var(--accent);
-        }
-
-        .cards-grid .projected:nth-of-type(odd)::before {
-            left: 100%;
-            margin-left: 20px;
-            width: 120px;
-        }
-
-        .cards-grid .projected:nth-of-type(even)::before {
-            right: 100%;
-            margin-right: 20px;
-            width: 120px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent);
         }
 
         .projected:hover {
             border-color: var(--accent);
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .projected img {
@@ -255,23 +249,6 @@
             object-fit: cover;
             border-radius: 12px;
             transition: 0.5s;
-        }
-
-        @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .trunk {
-                left: 50px;
-            }
-
-            .projected::before {
-                left: -120px;
-                right: auto;
-                margin: 0;
-                width: 120px;
-            }
         }
 
         .projected:hover img {
@@ -402,6 +379,14 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .vertical-line {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -422,7 +407,7 @@
     <div class="hero" id="home">
         <div class="hero-container">
             <div class="hero-image-side">
-                <img src="image/GEDEZA.png" alt="Gedeza Brand">
+                <img src="image/MNYAND.jpg" alt="Gedeza Brand">
             </div>
             <div class="hero-content">
                 <h2>Building Future-Ready Web Solutions</h2>
@@ -487,11 +472,15 @@
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="cards-grid">
-            <div class="trunk"></div>
             <div class="projected" data-url="Myjenoury.html">
-                <img src="image/GEDEZA.png" alt="Portfolio Preview">
+                <img src="image/MNYAND.jpg" alt="Portfolio Preview">
                 <h4>MY PORTFOLIO</h4>
                 <p>Responsive design and custom UI elements.</p>
+                
+            </div>
+            <div class="vertical-line">
+                <div class="bullet"></div>
+                <div class="bullet"></div>
             </div>
             <div class="projected" data-url="Fanis.html">
                 <img src="image/Mafani.jpeg" alt="Bakery Preview">
@@ -507,6 +496,7 @@
             <iframe id="project-frame" src=""></iframe>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer-left">
             <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
@@ -534,7 +524,6 @@
     </footer>
 
     <script>
-        // Typing Effect
         const textElement = document.getElementById("animated-text");
         const phrases = ["SFUNDO MNYANDU", "WEB DESIGNER"];
         let phraseIdx = 0, charIdx = 0, isDeleting = false;
@@ -546,8 +535,6 @@
             else setTimeout(type, isDeleting ? 100 : 200);
         }
         type();
-
-        // Modal Logic
         const modal = document.getElementById("project-modal"), frame = document.getElementById("project-frame");
         document.querySelectorAll(".projected").forEach(card => {
             card.onclick = () => { frame.src = card.getAttribute("data-url"); modal.style.display = "block"; };
