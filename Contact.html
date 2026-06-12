@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,170 +10,291 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --accent: #00d4ff; }
-        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --accent: #00d4ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
-            font-family:'Poppins',sans-serif;
-            min-height:100vh;
-            display:flex;
-            flex-direction:column;
-            background:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070') no-repeat center/cover;
-            background-attachment:fixed;
-            color:white;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070') no-repeat center/cover;
+            background-attachment: fixed;
+            color: white;
         }
 
         body::before {
-            content:"";
-            position:fixed;
-            top:0; left:0;
-            width:100%; height:100%;
-            background:rgba(15,32,39,0.85);
-            z-index:0;
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 32, 39, 0.85);
+            z-index: 0;
         }
 
         header {
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:20px 10%;
-            background:rgba(0,0,0,0.8);
-            backdrop-filter:blur(15px);
-            position:sticky;
-            top:0;
-            z-index:1000;
-            border-bottom:1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .logo { color:var(--accent); font-size:24px; text-decoration:none; }
-        .nav a { margin:0 15px; text-decoration:none; color:white; text-transform:uppercase; font-size:0.8rem; transition:0.3s; }
-        .nav a:hover { color:var(--accent); }
+        .logo {
+            color: var(--accent);
+            font-size: 24px;
+            text-decoration: none;
+        }
+
+        .nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--accent);
+        }
 
         .main-wrapper {
-            display:flex;
-            justify-content:center;
-            gap:40px;
-            padding:60px 10%;
-            flex:1;
-            position:relative;
-            z-index:1;
-            flex-wrap:wrap;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 60px 10%;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
         }
 
         .glass-card {
-            flex:1;
-            min-width:320px;
-            max-width:500px;
-            padding:40px;
-            background:rgba(255,255,255,0.05);
-            backdrop-filter:blur(20px);
-            border-radius:20px;
-            border:1px solid rgba(255,255,255,0.1);
+            flex: 1;
+            min-width: 320px;
+            max-width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .map-container { margin-top:25px; border-radius:15px; overflow:hidden; border:1px solid rgba(0,212,255,0.3); }
-        iframe { width:100%; height:200px; border:none; filter:grayscale(0.5) invert(0.9) contrast(1.2); }
+        .map-container {
+            margin-top: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
 
-        input, textarea { width:100%; padding:15px; background:rgba(255,255,255,0.1); border-radius:10px; border:1px solid transparent; color:white; margin-bottom:20px; outline:none; }
-        input:focus, textarea:focus { border:1px solid var(--accent); box-shadow:0 0 10px rgba(0,212,255,0.3); }
-        button { width:100%; padding:15px; background:var(--accent); color:black; border:none; border-radius:10px; font-weight:600; cursor:pointer; }
+        iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+            filter: grayscale(0.5) invert(0.9) contrast(1.2);
+        }
 
-        .footer { display: flex; flex-wrap: wrap; justify-content: space-between; padding: 80px 10%; background: #050a0c; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; z-index: 1; }
-        .footer-left { flex: 1; min-width: 250px; margin-bottom: 40px; }
-        .footer-left img { width: 150px; margin-bottom: 20px; }
-        .footer-right { display: flex; flex: 2; justify-content: flex-end; gap: 60px; flex-wrap: wrap; }
-        .footer-links h4, .footer-contact h4 { color: var(--accent); margin-bottom: 20px; font-size: 0.9rem; text-transform: uppercase; }
-        .footer-links a, .footer-contact p { display: block; color: #aaa; text-decoration: none; margin: 10px 0; font-size: 0.9rem; }
-        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
-        .social-icons a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            border: 1px solid transparent;
+            color: white;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border: 1px solid var(--accent);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: var(--accent);
+            color: black;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 80px 10%;
+            background: #050a0c;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+        }
+
+        .footer-left img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex: 2;
+            justify-content: flex-end;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .footer-links a,
+        .footer-contact p {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+        }
     </style>
 </head>
+
 <body>
 
-<header>
-    <a href="Home.html" class="logo"><i class="fas fa-terminal"></i></a>
-    <div class="nav">
-        <a href="Home.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="ViewP.html">Packages</a>
-        <a href="Contact.html">Contact</a>
-    </div>
-</header>
-
-<div class="main-wrapper">
-    <div class="glass-card">
-        <h1>Contact Me</h1>
-        <p>I am available for freelance projects and collaborations. Let's build something impactful together.</p>
-        <div style="margin-top:20px;">
-            <p><i class="fas fa-envelope" style="color:var(--accent);"></i> mnyandusfundo92@mail.com</p>
-            <p><i class="fas fa-phone" style="color:var(--accent);"></i> +27 79 491 1223</p>
+    <header>
+        <a href="Home.html" class="logo"><i class="fas fa-terminal"></i></a>
+        <div class="nav">
+            <a href="Home.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="ViewP.html">Packages</a>
+            <a href="Contact.html">Contact</a>
         </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
-        </div>
-    </div>
+    </header>
 
-    <div class="glass-card">
-        <h2>Send a Message</h2>
-        <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
-            <input type="text" name="name" id="name" placeholder="Full Name" required>
-            <input type="email" name="email" id="email" placeholder="Email Address" required>
-            <textarea name="message" id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-
-        <a href="https://wa.me/27794911223" target="_blank" style="display:block; text-align:center; margin-top:15px; text-decoration:none;">
-            <div style="padding:12px; border-radius:10px; background:rgba(0,255,174,0.1); border:1px solid #00ffae; color:#00ffae;">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    <div class="main-wrapper">
+        <div class="glass-card">
+            <h1>Contact Me</h1>
+            <p>I am available for freelance projects and collaborations. Let's build something impactful together.</p>
+            <div style="margin-top:20px;">
+                <p><i class="fas fa-envelope" style="color:var(--accent);"></i> mnyandusfundo92@mail.com</p>
+                <p><i class="fas fa-phone" style="color:var(--accent);"></i> +27 79 491 1223</p>
             </div>
-        </a>
-        <p id="status" style="margin-top:20px; display:none;"></p>
-    </div>
-</div>
-
-<footer class="footer">
-    <div class="footer-left">
-        <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
-        <p>Informatics Solutions & Professional Web Design.</p>
-        <p>© SM G E D E Z A  D E V E L O P E R , RSA.</p>
-    </div>
-    <div class="footer-right">
-        <div class="footer-links">
-            <h4>Navigate</h4>
-            <a href="Home.html">Home</a><a href="About.html">About</a><a href="ViewP.html">Services</a><a href="Contact.html">Contact</a>
-        </div>
-        <div class="footer-contact">
-            <h4>Contact Info</h4>
-            <p><i class="fas fa-envelope"></i> mnyandusfundo92@mail.com</p>
-            <p><i class="fas fa-phone"></i> +27 79 491 1223</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?..." loading="lazy"></iframe>
             </div>
         </div>
+
+        <div class="glass-card">
+            <h2>Send a Message</h2>
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+                <input type="text" name="name" id="name" placeholder="Full Name" required>
+                <input type="email" name="email" id="email" placeholder="Email Address" required>
+                <textarea name="message" id="message" rows="5" placeholder="Tell me about your project..."
+                    required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <a href="https://wa.me/27794911223" target="_blank"
+                style="display:block; text-align:center; margin-top:15px; text-decoration:none;">
+                <div
+                    style="padding:12px; border-radius:10px; background:rgba(0,255,174,0.1); border:1px solid #00ffae; color:#00ffae;">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </div>
+            </a>
+            <p id="status" style="margin-top:20px; display:none;"></p>
+        </div>
     </div>
-</footer>
 
-<script>
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('status');
+    <footer class="footer">
+        <div class="footer-left">
+            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
+            <p>Informatics Solutions & Professional Web Design.</p>
+            <p>© SM G E D E Z A D E V E L O P E R , RSA.</p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <h4>Navigate</h4>
+                <a href="Home.html">Home</a><a href="About.html">About</a><a href="ViewP.html">Services</a><a
+                    href="Contact.html">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> mnyandusfundo92@mail.com</p>
+                <p><i class="fas fa-phone"></i> +27 79 491 1223</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-    form.addEventListener('submit', function(e){
-        // If using Formspree, you can remove the preventDefault to allow redirection
-        e.preventDefault();
-        const name = document.getElementById('name').value.trim();
-        status.style.display = 'block';
-        status.style.color = "#00ffae";
-        status.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending message...`;
+    <script>
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('status');
 
-        setTimeout(() => {
-            status.innerHTML = `<i class="fas fa-check-circle"></i> Thank you, ${name}! Your message has been received.`;
-            form.reset();
-            setTimeout(() => { status.style.display = 'none'; }, 5000);
-        }, 1500);
-    });
-</script>
+        form.addEventListener('submit', function (e) {
+            // If using Formspree, you can remove the preventDefault to allow redirection
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            status.style.display = 'block';
+            status.style.color = "#00ffae";
+            status.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending message...`;
+
+            setTimeout(() => {
+                status.innerHTML = `<i class="fas fa-check-circle"></i> Thank you, ${name}! Your message has been received.`;
+                form.reset();
+                setTimeout(() => { status.style.display = 'none'; }, 5000);
+            }, 1500);
+        });
+    </script>
 </body>
+
 </html>
