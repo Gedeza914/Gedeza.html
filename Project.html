@@ -3,58 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Project</title>
-
+    <title>Projects & Architectural Systems | Gedeza</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Projec.css">
+    
 </head>
 
 <body>
- <header>
+
+    <header>
         <div class="logo"><i class="fas fa-terminal"></i> GEDEZA</div>
-         <div class="nav">
-            <a href="Home.html" class="active"><i class="fas fa-house" ></i></a>
-            <a href="About.html"><i class="fas fa-circle-info" ></i></a>
-            <a href="Porfolio.html"><i class="fas fa-box" ></i></a>
-            <a href="Project.html"><i class="fas fa-diagram-project" ></i></a>
-            <a href="Contact.html"><i class="fas fa-address-book" "></i></a>
-        </div>
+        <nav class="nav">
+            <a href="Home.html"><i class="fas fa-house"></i></a>
+            <a href="About.html"><i class="fas fa-circle-info"></i></a>
+            <a href="Porfolio.html"><i class="fas fa-box"></i></a>
+            <a href="Project.html" class="active"><i class="fas fa-diagram-project"></i></a>
+            <a href="Contact.html"><i class="fas fa-address-book"></i></a>
+        </nav>
     </header>
-<section id="computer">
-    <div class="about-title-side">
-            
-            
-            <h3>Software Engineer &amp;<br>Web Architect</h3>
+
+    <section id="computer">
+        <div class="about-title-side">
+            <h3>Software Engineer &amp;<br><span>Web Architect</span></h3>
         </div>
         <div class="about-content-side">
-            <p> As South African citizen  solutions developer specialized in modern structural programming logic and intuitive user systems. Operating under the enterprise standard <strong>SM Gedeza Dev</strong>, I eliminate structural clutter to implement scalable designs.</p>
-            <p>Leveraging Java, enterprise-level HTML5, clean CSS execution, and modern responsive asynchronous JavaScript, I code high-availability operational structures that power commerce continuously.</p>
-           
-        </div>
-</section>
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        
-        <div class="cards-grid">
-            <div class="project-wrapper-left">
-                <div class="projected" data-url="Myjenoury.html">
-                    <img src="image/MNYAND.jpg" alt="Portfolio Preview">
-                    <h4>MY PORTFOLIO</h4>
-                    <p>Responsive design and custom UI elements.</p>
-                </div>
-            </div>
-
-            <div class="timeline-center">
-                <div class="vertical-line"></div>
-                <div class="bullet bullet-top"></div>
-                <div class="bullet bullet-bottom"></div>
-            </div>
-
-            </div>
+            <p>As a South African solutions developer specialized in modern structural programming logic and intuitive user systems, I operate under the enterprise standard <strong>SM Gedeza Dev</strong> to eliminate structural clutter and implement scalable designs.</p>
+            <p>Leveraging <span>Java</span>, <span>enterprise-level HTML5</span>, <span>clean CSS execution</span>, and <span>modern responsive JavaScript</span>, I build high-availability operational structures built for performance.</p>
         </div>
     </section>
 
+    <section class="skills-container">
+        <h2 class="section-title">Technical Competencies</h2>
+        <div class="skills-grid">
+            <span class="skill-tag"><i class="fab fa-html5"></i> HTML5 &amp; CSS3</span>
+            <span class="skill-tag"><i class="fas fa-diagram-next"></i> System Analysis</span>
+            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+            <span class="skill-tag"><i class="fab fa-java"></i> Java Development</span>
+            <span class="skill-tag"><i class="fas fa-sitemap"></i> Enterprise Architecture</span>
+            <span class="skill-tag"><i class="fas fa-chart-line"></i> Business Intelligence</span>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Production Build-Outs</h2>
+
+        <div class="projects-grid">
+            
+            <!-- Computer Project Card 1 -->
+            <div class="computer-card">
+                <div class="window-header">
+                    <div class="window-dots">
+                        <span class="dot dot-red"></span>
+                        <span class="dot dot-yellow"></span>
+                        <span class="dot dot-green"></span>
+                    </div>
+                    <span class="window-title">system_v1.0 // portfolio_host</span>
+                </div>
+                <div class="window-screen">
+                    <img src="image/MNYAND.jpg" alt="Portfolio Terminal View">
+                    <div class="screen-overlay"></div>
+                </div>
+                <div class="window-body">
+                    <h4>Core Portfolio Interaction</h4>
+                    <p>Native viewport framework engineered with fluid UI animations, glassmorphism layers, and responsive CSS grid architectures.</p>
+                    <div class="tech-stack">
+                        <span class="tech-pill">HTML5</span>
+                        <span class="tech-pill">CSS3</span>
+                        <span class="tech-pill">JS ES6</span>
+                    </div>
+                    <button class="btn-launch projected" data-url="Myjourney.html">
+                      <a href="Home.html" target="_blank"><i class="fas fa-desktop"></i> Launch System View</a>
+                    </button>
+                </div>
+                      
+            </div>
+
+            
+        
+    </section>
+
+    <!-- Interactive Lightbox Modal -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -64,26 +94,26 @@
 
     <footer class="footer">
         <div class="footer-left">
-            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
-            <p>Informatics Solutions & Professional Web Design.</p>
-            <p>&copy;2026 SM G E D E Z A D E V E L O P E R , RSA.</p>
+            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Seal">
+            <p>Informatics Solutions &amp; Professional Web Design.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.5;">&copy;2026 SM GEDEZA DEVELOPER, RSA. All Rights Reserved.</p>
         </div>
         <div class="footer-right">
             <div class="footer-links">
-                <h4>Navigate</h4>
+                <h4>Router</h4>
                 <a href="Home.html">Home</a>
                 <a href="About.html">About</a>
-                <a href="Porfolio.html">Services</a>
+                <a href="Portfolio.html">Services</a>
                 <a href="Contact.html">Contact</a>
             </div>
             <div class="footer-contact">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-envelope"></i> mnyandusfundo92@mail.com</p>
-                <p><i class="fas fa-phone"></i> +27 79 491 1223</p>
+                <h4>Contact Terminal</h4>
+                <p><i class="fas fa-envelope" style="color:var(--accent);"></i> mnyandusfundo92@gmail.com</p>
+                <p><i class="fas fa-phone" style="color:var(--accent);"></i> +27 79 491 1223</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://github.com/yourprofile" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
@@ -94,10 +124,14 @@
         const modal = document.getElementById("project-modal");
         const frame = document.getElementById("project-frame");
         
-        document.querySelectorAll(".projected").forEach(card => {
-            card.onclick = () => { 
-                frame.src = card.getAttribute("data-url"); 
-                modal.style.display = "block"; 
+        // Attach click triggers to modal launcher buttons
+        document.querySelectorAll(".projected").forEach(btn => {
+            btn.onclick = () => { 
+                const targetUrl = btn.getAttribute("data-url");
+                if (targetUrl) {
+                    frame.src = targetUrl; 
+                    modal.style.display = "block"; 
+                }
             };
         });
         
@@ -107,7 +141,7 @@
         };
         
         window.onclick = (e) => { 
-            if (e.target == modal) { 
+            if (e.target === modal) { 
                 modal.style.display = "none"; 
                 frame.src = ""; 
             } 
