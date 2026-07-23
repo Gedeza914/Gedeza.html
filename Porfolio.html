@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Web Solutions | SM Gedeza Dev</title>
+    <meta name="description" content="High-end, affordable website packages by Sfundo Mnyandu. Specialized in Portfolio, Booking, and E-commerce systems.">
+    <meta name="author" content="Sfundo Mnyandu">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="Port.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="Home.html" class="logo">SM GEDEZA DEV</a>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Portfolio.html" class="active">Packages</a></li>
+        <li><a href="Project.html">Projects</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+    </ul>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">☰</button>
+</header>
+
+<div class="package-tabs">
+    <button class="tab-button active" data-target="portfolio">Portfolio</button>
+    <button class="tab-button" data-target="booking">Booking</button>
+    <button class="tab-button" data-target="ecommerce">Shop</button>
+</div>
+
+<section id="portfolio" class="tab-section active">
+    <div class="section-intro">
+        <h2>Corporate & Portfolio</h2>
+        <p>High-performance sites for professionals and small businesses</p>
+    </div>
+
+    <div class="package-cards">
+        <div class="package-card">
+            <h3>Starter</h3>
+            <p class="price">R1,500</p>
+            <ul>
+                <li><i class="fas fa-check"></i> 3 Custom Pages</li>
+                <li><i class="fas fa-check"></i> Responsive Mobile Layout</li>
+                <li><i class="fas fa-check"></i> Modern Contact Form</li>
+                <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+
+        <div class="package-card">
+            <span class="badge">Most Popular</span>
+            <h3>Business</h3>
+            <p class="price">R3,500</p>
+            <ul>
+                <li><i class="fas fa-check"></i> 5-7 Premium Pages</li>
+                <li><i class="fas fa-check"></i> Interactive Animations</li>
+                <li><i class="fas fa-check"></i> Content Management (CMS)</li>
+                <li><i class="fas fa-check"></i> Advanced Google SEO</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+
+        <div class="package-card">
+            <h3>Enterprise</h3>
+            <p class="price">R6,000+</p>
+            <ul>
+                <li><i class="fas fa-check"></i> Unlimited Pages</li>
+                <li><i class="fas fa-check"></i> Custom Web Application</li>
+                <li><i class="fas fa-check"></i> Dedicated Admin Dashboard</li>
+                <li><i class="fas fa-check"></i> Priority Support</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Select Plan</a>
+        </div>
+    </div>
+</section>
+
+<section id="booking" class="tab-section">
+    <div class="section-intro">
+        <h2>Booking Systems</h2>
+        <p>Streamline your appointments and client scheduling</p>
+    </div>
+    <div class="package-cards">
+        <div class="package-card">
+            <span class="badge">Efficiency</span>
+            <h3>Service Pro</h3>
+            <p class="price">R4,500</p>
+            <ul>
+                <li><i class="fas fa-calendar-alt"></i> Online Scheduling</li>
+                <li><i class="fas fa-bell"></i> Email Notifications</li>
+                <li><i class="fas fa-user-friends"></i> Client Database</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Get Started</a>
+        </div>
+    </div>
+</section>
+
+<section id="ecommerce" class="tab-section">
+    <div class="section-intro">
+        <h2>E-commerce Store</h2>
+        <p>Ready-to-sell platforms with secure payment gateways</p>
+    </div>
+    <div class="package-cards">
+        <div class="package-card">
+            <span class="badge">Secure</span>
+            <h3>Online Shop</h3>
+            <p class="price">R8,500+</p>
+            <ul>
+                <li><i class="fas fa-shopping-cart"></i> Product Management</li>
+                <li><i class="fas fa-credit-card"></i> Payment Integration</li>
+                <li><i class="fas fa-box"></i> Order Tracking</li>
+            </ul>
+            <a href="mailto:mnyandusfundo92@mail.com" class="cta-button">Build Store</a>
+        </div>
+    </div>
+</section>
+
+<section class="addons-section">
+    <h2 style="text-align: center; margin-bottom: 40px;">Professional Add-Ons</h2>
+    <div class="addon-grid">
+        <div class="addon-card">
+            <h4>Extra Page</h4>
+            <p>R250 - R500</p>
+        </div>
+        <div class="addon-card">
+            <h4>Monthly Maintenance</h4>
+            <p>R200 / mo</p>
+        </div>
+        <div class="addon-card">
+            <h4>Logo Design</h4>
+            <p>R450</p>
+        </div>
+        <div class="addon-card">
+            <h4>Speed Optimization</h4>
+            <p>R600</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div class="footer-left">
+            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Logo">
+            <p>Informatics Solutions & Professional Web Design.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Explore</h4>
+            <a href="Home.html">Home</a>
+            <a href="About.html">About Me</a>
+            <a href="Portfolio.html">Packages</a>
+            <a href="Project.html">Projects</a>
+            <a href="Contact.html">Get in Touch</a>
+        </div>
+        <div>
+            <h4>Connect</h4>
+            <p style="color:#888; font-size:0.9rem;">
+                <i class="fas fa-envelope" style="color:#00d4ff; width:20px;"></i> mnyandusfundo92@mail.com<br>
+                <i class="fas fa-phone" style="color:#00d4ff; width:20px;"></i> +27 79 491 1223
+            </p>
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/27794911223" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Sfundo Mnyandu | SM Gedeza Dev, RSA. All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+    // Tab Functionality
+    const buttons = document.querySelectorAll(".tab-button");
+    const sections = document.querySelectorAll(".tab-section");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            sections.forEach(s => s.classList.remove("active"));
+
+            btn.classList.add("active");
+            document.getElementById(btn.dataset.target).classList.add("active");
+        });
+    });
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+        const nav = document.getElementById('navLinks');
+        nav.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

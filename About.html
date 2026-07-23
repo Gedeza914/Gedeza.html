@@ -14,12 +14,13 @@
 
 <nav>
     <div class="logo">GeDeza</div>
-    <div class="nav-links">
-        <a href="Home.html">Home</a>
-        <a href="About.html">About</a>
-        <a href="ViewP.html">Packages</a>
-        <a href="Project.html">Projects</a>
-    </div>
+    <div class="nav">
+           <a href="Home.html" class="active"><i class="fas fa-house" ></i></a>
+            <a href="About.html"><i class="fas fa-circle-info" ></i></a>
+            <a href="Porfolio.html"><i class="fas fa-box" ></i></a>
+            <a href="Project.html"><i class="fas fa-diagram-project" ></i></a>
+            <a href="Contact.html"><i class="fas fa-address-book" "></i></a>
+        </div>
 </nav>
 
 <section id="home" class="hero">
@@ -30,6 +31,10 @@
             <button class="hire-btn">Hire Me</button>
         </a>
     </div>
+    <div class="hero-image-side">
+                <img src="image/IMG-20230907-WA0081.jpg" alt="Sfundo Mnyandu Blueprint">
+            </div>
+        </div>
 </section>
 
 <section id="about" class="section">
@@ -109,7 +114,7 @@
 <script>
     // Typing Animation Animation
     const textElement = document.getElementById("animated-text");
-    const words = ["SFUNDO MNYANDU", "Software Developer", "Java Developer", "Web Designer"];
+    const words = ["SFUNDO MNYANDU"];
     let wordIndex = 0, charIndex = 0;
 
     function type() {

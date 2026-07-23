@@ -1,5 +1,4 @@
-
-        :root {
+:root {
             --accent: #00d4ff;
             --accent-glow: rgba(0, 212, 255, 0.4);
             --dark-bg: #030708;
@@ -89,20 +88,32 @@
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
+        .nav {
+            display: flex;
+            gap: 10px;
+        }
+
         .nav a {
-            margin: 0 15px;
-            text-decoration: none;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-muted);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.95rem;
             transition: var(--transition);
-            letter-spacing: 1.5px;
+            text-decoration: none;
         }
 
         .nav a:hover, .nav a.active {
-            color: var(--accent);
-            text-shadow: 0 0 8px var(--accent-glow);
+            color: #030708;
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
         }
 
         /* HERO SECTION */
@@ -262,6 +273,10 @@
             grid-template-columns: 1fr 1.2fr;
             gap: 60px;
             align-items: center;
+            background: linear-gradient(rgba(10, 14, 20, 0.9), rgba(7, 26, 56, 0.9)), url('image/Minimal%20Fly%20Bird%20Logo.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
         }
 
         .about-title-side h3 {
@@ -274,6 +289,10 @@
         .about-content-side p {
             color: var(--text-muted);
             margin-bottom: 25px;
+        }
+
+        .about-content-side .btn {
+            margin-top: 15px;
         }
 
         /* PRICING TABLE */
@@ -317,6 +336,10 @@
 
         .pricing-card .price span {
             color: var(--accent);
+        }
+
+        .pricing-card ul {
+            list-style: none;
         }
 
         .pricing-card ul li {
