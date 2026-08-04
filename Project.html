@@ -13,17 +13,19 @@
 
 <body>
 
+    <!-- Header Navigation -->
     <header>
-        <div class="logo"><i class="fas fa-terminal"></i> GEDEZA</div>
+        <a href="Home.html" class="logo"><i class="fas fa-terminal"></i> GEDEZA</a>
         <nav class="nav">
-            <a href="Home.html"><i class="fas fa-house"></i></a>
-            <a href="About.html"><i class="fas fa-circle-info"></i></a>
-            <a href="Porfolio.html"><i class="fas fa-box"></i></a>
-            <a href="Project.html" class="active"><i class="fas fa-diagram-project"></i></a>
-            <a href="Contact.html"><i class="fas fa-address-book"></i></a>
+            <a href="Home.html" title="Home"><i class="fas fa-house"></i></a>
+            <a href="About.html" title="About"><i class="fas fa-circle-info"></i></a>
+            <a href="Portfolio.html" title="Portfolio"><i class="fas fa-box"></i></a>
+            <a href="Project.html" class="active" title="Projects"><i class="fas fa-diagram-project"></i></a>
+            <a href="Contact.html" title="Contact"><i class="fas fa-address-book"></i></a>
         </nav>
     </header>
 
+    <!-- Developer Intro Section -->
     <section id="computer">
         <div class="about-title-side">
             <h3>Software Engineer &amp;<br><span>Web Architect</span></h3>
@@ -34,6 +36,7 @@
         </div>
     </section>
 
+    <!-- Technical Competencies -->
     <section class="skills-container">
         <h2 class="section-title">Technical Competencies</h2>
         <div class="skills-grid">
@@ -46,6 +49,7 @@
         </div>
     </section>
 
+    <!-- Production Builds Portfolio -->
     <section id="projects">
         <h2 class="section-title">Production Build-Outs</h2>
 
@@ -62,7 +66,7 @@
                     <span class="window-title">system_v1.0 // portfolio_host</span>
                 </div>
                 <div class="window-screen">
-                    <img src="image/MNYAND.jpg" alt="Portfolio Terminal View">
+                    <img src="image/MNYAND.jpg" alt="Portfolio Terminal View" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80'">
                     <div class="screen-overlay"></div>
                 </div>
                 <div class="window-body">
@@ -73,30 +77,34 @@
                         <span class="tech-pill">CSS3</span>
                         <span class="tech-pill">JS ES6</span>
                     </div>
-                    <button class="btn-launch projected" data-url="Home.html">
-                      <a href="Home.html" target="_blank"><i class="fas fa-desktop"></i> Launch System View</a>
-                    </button>
+                    <div class="card-actions">
+                        <button class="btn-launch projected" data-url="Home.html">
+                            <i class="fas fa-desktop"></i> Launch System View
+                        </button>
+                        <a href="Home.html" target="_blank" class="btn-secondary" title="Open in new tab">
+                            <i class="fas fa-up-right-from-square"></i>
+                        </a>
+                    </div>
                 </div>
-                      
             </div>
 
-            
-        
+      
     </section>
 
     <!-- Interactive Lightbox Modal -->
-    <div id="project-modal" class="modal">
+    <div id="project-modal" class="modal" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <iframe id="project-frame" src=""></iframe>
+            <iframe id="project-frame" src="about:blank" title="Project Preview"></iframe>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-left">
-            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Seal">
+            <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="Gedeza Seal" onerror="this.style.display='none'">
             <p>Informatics Solutions &amp; Professional Web Design.</p>
-            <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.5;">&copy;2026 SM GEDEZA DEVELOPER, RSA. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; opacity: 0.5;">&copy; 2026 SM GEDEZA DEVELOPER, RSA. All Rights Reserved.</p>
         </div>
         <div class="footer-right">
             <div class="footer-links">
@@ -111,41 +119,57 @@
                 <p><i class="fas fa-envelope" style="color:var(--accent);"></i> mnyandusfundo92@gmail.com</p>
                 <p><i class="fas fa-phone" style="color:var(--accent);"></i> +27 79 491 1223</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://wa.me/27794911223" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/27794911223" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Interactive Script -->
     <script>
-        const modal = document.getElementById("project-modal");
-        const frame = document.getElementById("project-frame");
-        
-        // Attach click triggers to modal launcher buttons
-        document.querySelectorAll(".projected").forEach(btn => {
-            btn.onclick = () => { 
-                const targetUrl = btn.getAttribute("data-url");
-                if (targetUrl) {
-                    frame.src = targetUrl; 
-                    modal.style.display = "block"; 
-                }
-            };
-        });
-        
-        document.querySelector(".close-modal").onclick = () => { 
-            modal.style.display = "none"; 
-            frame.src = ""; 
-        };
-        
-        window.onclick = (e) => { 
-            if (e.target === modal) { 
+        document.addEventListener("DOMContentLoaded", () => {
+            const modal = document.getElementById("project-modal");
+            const frame = document.getElementById("project-frame");
+            const closeModalBtn = document.querySelector(".close-modal");
+            
+            // Attach click triggers to modal launcher buttons
+            document.querySelectorAll(".projected").forEach(btn => {
+                btn.addEventListener("click", () => { 
+                    const targetUrl = btn.getAttribute("data-url");
+                    if (targetUrl) {
+                        frame.src = targetUrl; 
+                        modal.style.display = "block";
+                        modal.setAttribute("aria-hidden", "false");
+                    }
+                });
+            });
+            
+            // Close Modal Function
+            const closeModal = () => {
                 modal.style.display = "none"; 
-                frame.src = ""; 
-            } 
-        };
+                modal.setAttribute("aria-hidden", "true");
+                frame.src = "about:blank"; 
+            };
+
+            closeModalBtn.addEventListener("click", closeModal);
+            
+            // Close Modal on Outside Click
+            window.addEventListener("click", (e) => { 
+                if (e.target === modal) { 
+                    closeModal();
+                } 
+            });
+
+            // Close Modal on Escape Key
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modal.style.display === "block") {
+                    closeModal();
+                }
+            });
+        });
     </script>
 </body>
 </html>
