@@ -7,28 +7,32 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Projec.css">
+    <link rel="stylesheet" href="Project.css">
     
 </head>
 
 <body>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="header-left">
-            <div class="logo"><i class="fas fa-terminal"></i> GEDEZA</div>
-            <div class="status-badge">
-                <div class="status-pulse"></div>
-            </div>
-        </div>
-        <div class="nav">
-            <a href="Home.html" ><i class="fas fa-house"></i></a>
-            <a href="About.html"><i class="fas fa-circle-info"></i></a>
-            <a href="Porfolio.html"><i class="fas fa-box"></i></a>
-            <a href="Project.html" class="active"><i class="fas fa-diagram-project"></i></a>
-            <a href="Contact.html"><i class="fas fa-address-book" "></i></a>
-        </div>
-    </header>
+    <!-- Navigation Header -->
+  <header class="header">
+    <div class="container nav-inner">
+      <a href="#" class="brand-logo">
+        SM Gedeza <span class="brand-tag">DEV</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="Home.html" class="nav-link">Home</a></li>
+        <li><a href="Project.html" class="nav-link">Projects</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Package.html" class="nav-link">Packages</a></li>
+        <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-controls">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark theme">
+          <i data-lucide="moon" id="themeIcon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
 
     <!-- Developer Intro Section -->
     <section id="computer">
@@ -134,47 +138,9 @@
     </footer>
 
     <!-- Interactive Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const modal = document.getElementById("project-modal");
-            const frame = document.getElementById("project-frame");
-            const closeModalBtn = document.querySelector(".close-modal");
-            
-            // Attach click triggers to modal launcher buttons
-            document.querySelectorAll(".projected").forEach(btn => {
-                btn.addEventListener("click", () => { 
-                    const targetUrl = btn.getAttribute("data-url");
-                    if (targetUrl) {
-                        frame.src = targetUrl; 
-                        modal.style.display = "block";
-                        modal.setAttribute("aria-hidden", "false");
-                    }
-                });
-            });
-            
-            // Close Modal Function
-            const closeModal = () => {
-                modal.style.display = "none"; 
-                modal.setAttribute("aria-hidden", "true");
-                frame.src = "about:blank"; 
-            };
-
-            closeModalBtn.addEventListener("click", closeModal);
-            
-            // Close Modal on Outside Click
-            window.addEventListener("click", (e) => { 
-                if (e.target === modal) { 
-                    closeModal();
-                } 
-            });
-
-            // Close Modal on Escape Key
-            window.addEventListener("keydown", (e) => {
-                if (e.key === "Escape" && modal.style.display === "block") {
-                    closeModal();
-                }
-            });
-        });
-    </script>
+    <script script src="Project.js"></script>
+    
+    
+    
 </body>
 </html>
