@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gedeza | Sfundo Mnyandu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="Home.css">
 </head>
 
@@ -14,26 +15,28 @@
 
     <!-- Navigation Header -->
     <header class="header">
-    <div class="container nav-inner">
-        <a href="Home.html" class="brand-logo">
-            SM Gedeza <span class="brand-tag">DEV</span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="Home.html" class="nav-link">Home</a></li>
-            <li><a href="Project.html" class="nav-link">Projects</a></li>
-            <li><a href="About.html" class="nav-link">About</a></li>
-            <li><a href="Package.html" class="nav-link">Packages</a></li>
-            <li><a href="Contact.html" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="nav-controls">
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <i data-lucide="moon" id="themeIcon"></i>
-            </button>
+        <div class="container nav-inner">
+            <a href="Home.html" class="brand-logo">
+                SM Gedeza <span class="brand-tag">DEV</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="Home.html" class="nav-link">Home</a></li>
+                <li><a href="Project.html" class="nav-link">Projects</a></li>
+                <li><a href="About.html" class="nav-link">About</a></li>
+                <li><a href="Package.html" class="nav-link">Packages</a></li>
+                <li><a href="Contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-controls">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i data-lucide="moon" id="themeIcon"></i>
+                </button>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
+    <!-- Sunrise Hero Section -->
     <div class="hero" id="home">
+        <div class="sun-orb"></div>
         <div class="hero-container">
             <div class="hero-content">
                 <h2>Web Architectures</h2>
@@ -50,7 +53,8 @@
         </div>
     </div>
 
-    <section id="myself">
+    <!-- About Section -->
+    <section id="myself" class="reveal">
         <div class="about-title-side">
             <span class="section-tag">Core Profile</span>
             <h2 class="section-title">ABOUT ME</h2>
@@ -63,7 +67,8 @@
         </div>
     </section>
 
-    <section id="services">
+    <!-- Packages Section -->
+    <section id="services" class="reveal">
         <div class="section-header">
             <span class="section-tag">Tier Matrix</span>
             <h2 class="section-title">Deployment Packages</h2>
@@ -103,7 +108,8 @@
         </div>
     </section>
 
-    <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="reveal">
         <div class="section-header">
             <span class="section-tag">System Verification</span>
             <h2 class="section-title">Featured Production Build-Outs</h2>
@@ -117,6 +123,7 @@
         </div>
     </section>
 
+    <!-- Modal Sandbox -->
     <div id="project-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -124,6 +131,7 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-left">
             <img src="image/Black and Gold Elegant Modern Initial Name Logo.png" alt="SM Gedeza Corporate Seal">
@@ -152,8 +160,6 @@
     </footer>
 
     <script src="Load.js"></script> 
-    <!-- <script src="About.js"></script> -->
-    <!-- <script src="Project.js"></script> -->
 </body>
 
 </html>
