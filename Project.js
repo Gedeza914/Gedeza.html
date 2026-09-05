@@ -1,117 +1,337 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('themeToggle');
-    const rootHTML = document.documentElement;
+/* ==========================================================================
+   GEDEZA PROJECT WEBSITE
+   THEME + MODAL JAVASCRIPT
+========================================================================== */
 
-    // Initialize Lucide icons if available
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* ============================================================
+       ELEMENTS
+    ============================================================ */
+
+    const rootHTML =
+        document.documentElement;
+
+    const themeToggleBtn =
+        document.getElementById("themeToggle");
+
+    const themeIcon =
+        document.getElementById("themeIcon");
+
+    const modal =
+        document.getElementById("project-modal");
+
+    const closeModalBtn =
+        document.getElementById("closeModalBtn");
+
+    const projectFrame =
+        document.getElementById("project-frame");
+
+    const launchButtons =
+        document.querySelectorAll(".btn-launch");
+
+
+    /* ============================================================
+       INITIALIZE LUCIDE
+    ============================================================ */
+
     if (window.lucide) {
+
         lucide.createIcons();
+
     }
 
-    // 1. Retrieve saved theme from LocalStorage or default to 'dark'
-    const savedTheme = localStorage.getItem('theme') || 'dark';
+
+    /* ============================================================
+       GET SAVED THEME
+       
+       If the visitor has already selected a theme,
+       remember it.
+
+       Otherwise default to DARK MODE.
+    ============================================================ */
+
+    const savedTheme =
+        localStorage.getItem("theme") || "dark";
+
+
     applyTheme(savedTheme);
 
-    // 2. Toggle Theme Event Listener
+
+    /* ============================================================
+       THEME TOGGLE
+    ============================================================ */
+
     if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const isLight = rootHTML.classList.contains('light-mode');
-            const newTheme = isLight ? 'dark' : 'light';
+
+        themeToggleBtn.addEventListener("click", () => {
+
+            const currentTheme =
+                rootHTML.classList.contains("light-mode")
+                    ? "light"
+                    : "dark";
+
+
+            const newTheme =
+                currentTheme === "light"
+                    ? "dark"
+                    : "light";
+
+
             applyTheme(newTheme);
+
         });
+
     }
 
-    /**
-     * Applies the designated theme class and updates storage/icon state
-     * @param {string} theme - 'dark' or 'light'
-     */
+
+    /* ============================================================
+       APPLY THEME
+    ============================================================ */
+
     function applyTheme(theme) {
-        if (theme === 'light') {
-            rootHTML.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
-            updateToggleIcon('sun');
-        } else {
-            rootHTML.classList.remove('light-mode');
-            localStorage.setItem('theme', 'dark');
-            updateToggleIcon('moon');
-        }
-    }
-    function setTheme(theme) {
-      if (theme === 'dark') {
-        htmlElement.classList.add('dark');
-        themeIcon.setAttribute('data-lucide', 'sun');
-      } else {
-        htmlElement.classList.remove('dark');
-        themeIcon.setAttribute('data-lucide', 'moon');
-      }
-      lucide.createIcons();
-      localStorage.setItem('theme', theme);
-    }
+
+        if (theme === "light") {
+
+            /* -----------------------------------------
+               WHITE MODE
+            ------------------------------------------ */
+
+            rootHTML.classList.add("light-mode");
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
 
 
-    /**
-     * Replaces and updates the theme button icon dynamically
-     * @param {string} iconName - 'sun' or 'moon'
-     */
-    function updateToggleIcon(iconName) {
-        const themeBtn = document.getElementById('themeToggle');
-        if (!themeBtn) return;
+            /*
+               Moon means:
+               "Click here to enter Dark Mode"
+            */
 
-        let iconEl = themeBtn.querySelector('i') || themeBtn.querySelector('svg');
+            updateThemeIcon("moon");
 
-        if (iconEl) {
-            const newIcon = document.createElement('i');
-            newIcon.id = 'themeIcon';
-            newIcon.setAttribute('data-lucide', iconName);
-            iconEl.replaceWith(newIcon);
+            if (themeToggleBtn) {
 
-            if (window.lucide) {
-                lucide.createIcons();
+                themeToggleBtn.setAttribute(
+                    "aria-label",
+                    "Switch to dark mode"
+                );
+
+                themeToggleBtn.setAttribute(
+                    "title",
+                    "Switch to dark mode"
+                );
+
             }
+
+        } else {
+
+            /* -----------------------------------------
+               DARK MODE
+            ------------------------------------------ */
+
+            rootHTML.classList.remove("light-mode");
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+
+            /*
+               Sun means:
+               "Click here to enter Light Mode"
+            */
+
+            updateThemeIcon("sun");
+
+            if (themeToggleBtn) {
+
+                themeToggleBtn.setAttribute(
+                    "aria-label",
+                    "Switch to light mode"
+                );
+
+                themeToggleBtn.setAttribute(
+                    "title",
+                    "Switch to light mode"
+                );
+
+            }
+
         }
+
     }
 
-    // Modal Control Initializations
-    const modal = document.getElementById('project-modal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    /* ============================================================
+       UPDATE THEME ICON
+    ============================================================ */
+
+    function updateThemeIcon(iconName) {
+
+        if (!themeIcon) {
+            return;
+        }
+
+
+        themeIcon.setAttribute(
+            "data-lucide",
+            iconName
+        );
+
+
+        if (window.lucide) {
+
+            lucide.createIcons();
+
+        }
+
+    }
+
+
+    /* ============================================================
+       PROJECT LAUNCH BUTTONS
+    ============================================================ */
+
+    launchButtons.forEach((button) => {
+
+        button.addEventListener("click", () => {
+
+            const url =
+                button.getAttribute("data-url");
+
+
+            if (url) {
+
+                openModal(url);
+
+            }
+
+        });
+
+    });
+
+
+    /* ============================================================
+       CLOSE MODAL BUTTON
+    ============================================================ */
 
     if (closeModalBtn) {
-        closeModalBtn.addEventListener('click', closeModal);
+
+        closeModalBtn.addEventListener(
+            "click",
+            closeModal
+        );
+
     }
+
+
+    /* ============================================================
+       CLOSE MODAL WHEN CLICKING OUTSIDE
+    ============================================================ */
 
     if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeModal();
+
+        modal.addEventListener("click", (event) => {
+
+            if (event.target === modal) {
+
+                closeModal();
+
+            }
+
         });
+
     }
 
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+
+    /* ============================================================
+       ESCAPE KEY
+    ============================================================ */
+
+    window.addEventListener("keydown", (event) => {
+
+        if (event.key === "Escape") {
+
+            closeModal();
+
+        }
+
     });
+
 });
 
-/**
- * Global function to trigger the project preview lightbox modal
- * @param {string} url - Target URL to load inside iframe
- */
+
+/* ==========================================================================
+   OPEN PROJECT MODAL
+========================================================================== */
+
 function openModal(url) {
-    const modal = document.getElementById('project-modal');
-    const iframe = document.getElementById('project-frame');
-    if (modal && iframe) {
-        iframe.src = url;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+
+    const modal =
+        document.getElementById("project-modal");
+
+    const iframe =
+        document.getElementById("project-frame");
+
+
+    if (!modal || !iframe) {
+        return;
     }
+
+
+    iframe.src = url;
+
+
+    modal.classList.add("active");
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
 }
 
-/**
- * Global function to close the active lightbox modal
- */
+
+/* ==========================================================================
+   CLOSE PROJECT MODAL
+========================================================================== */
+
 function closeModal() {
-    const modal = document.getElementById('project-modal');
-    const iframe = document.getElementById('project-frame');
-    if (modal && iframe) {
-        modal.classList.remove('active');
-        iframe.src = 'about:blank';
-        document.body.style.overflow = '';
+
+    const modal =
+        document.getElementById("project-modal");
+
+    const iframe =
+        document.getElementById("project-frame");
+
+
+    if (!modal || !iframe) {
+        return;
     }
+
+
+    modal.classList.remove("active");
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    iframe.src =
+        "about:blank";
+
+
+    document.body.style.overflow =
+        "";
+
 }
